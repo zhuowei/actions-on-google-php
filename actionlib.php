@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+$actionReqRaw = file_get_contents("php://input");
+$actionReq = json_decode($actionReqRaw, $assoc=true);
 
 function sendHeaders() {
 	header("Google-Assistant-API-Version: v1");
@@ -37,4 +39,9 @@ function ask(array $inputPrompt, $dialogState) {
 	];
 	sendHeaders();
 	echo json_encode($output);
+}
+
+function getRawInput() : ?string {
+	global $actionReq;
+	return $actionReq["inputs"][0]["raw_inputs"][0]["query"];
 }

@@ -1,3 +1,3 @@
 <?php
 require "actionlib.php";
-ask(buildInputPrompt(false, "I'm alive", ["Say anything"]), "42");
+ask(buildInputPrompt(false, "You said ".getRawInput(), ["Say anything"]), "42");
