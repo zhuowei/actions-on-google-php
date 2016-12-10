@@ -1,0 +1,36 @@
+{
+  "versionLabel": "1.0.0",
+  "agentInfo": {
+    "languageCode": "en-US",
+    "projectId": "<INSERT YOUR PROJECT ID HERE>",
+    "invocationNames": [
+      "rupert"
+    ],
+    "voiceName": "female_1"
+  },
+  "actions": [
+    {
+      "description": "Launch intent",
+      "initialTrigger": {
+        "intent": "assistant.intent.action.MAIN"
+      },
+      "httpExecution": {
+        "url": "https://rupert.ngrok.io"
+      }
+    },
+    {
+      "description": "deep link to Alexa",
+      "initialTrigger": {
+        "intent": "rupert.deeplink",
+        "queryPatterns": [
+          {
+            "queryPattern": "hey rupert $SchemaOrg_Text:text"
+          }
+        ]
+      },
+      "httpExecution": {
+        "url": "https://rupert.ngrok.io"
+      }
+    }
+  ]
+}
